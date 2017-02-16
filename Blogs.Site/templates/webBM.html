@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="/style/StyleWebBM.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="page_top">
+        <!--浮动时候，第一个块先浮动到右边，然后第二个紧接着浮动，最后一个最后浮动：“退出-》博客首页-》登陆“，浮动后变成”登陆-》博客首页-》退出“-->
+        <span><a href="#">退出</a></span><span><a href="#">博客首页</a></span><span>登陆</span> 
+</div>
+    <div class="page_body">
+        <div id="titel">博客后台管理</div>
+        <div id="menu">
+            <ul>
+                <li id="top_li">日志管理</li>
+                <li>文章分类管理</li>
+                <li>文章管理</li>
+            </ul>
+            <ul>
+                <li id="top_li"> 相册管理</li>
+                <li>相册列表管理</li>
+                <li>上传照片</li>
+            </ul>
+        </div>
+        <div id="text">
+            <div id="text_top"><input  type="button"  value="新增" onclick="window.location='p.ashx?id='+id"/><input type="button"  value="批量删除" onclick="window.location='p.ashx?id='+id" /></div>
+            <div></div>
+        </div> 
+    </div>
+    <div class="page_bottom">版权所有</div>
+
+</body>
+</html>

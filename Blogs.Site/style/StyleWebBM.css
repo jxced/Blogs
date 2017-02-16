@@ -1,0 +1,89 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+}
+
+div {
+    width: 960px;
+    border: 1px solid #0094ff;
+    margin: 0px auto;
+}
+
+.page_top{
+    min-height: 35px;
+    margin-top: 10px;
+    /*background-color:#0094ff;*/
+}
+
+    .page_top span {
+        font-size: 18px;
+        float: right;
+        font-weight: bolder;
+        padding: 10px;
+    }
+
+        .page_top span a {
+            text-decoration: none;
+        }
+
+a:hover {
+    color: #ff0000;
+}
+
+.page_body {
+    height: auto;
+    min-height: 650px;
+    margin-top: 10px;
+}
+
+    .page_body #titel {
+        font-size: 28px;
+        font-weight: bold;
+        background-color: #0094ff;
+        color: white;
+    }
+
+    .page_body #menu {
+        float: left;
+        margin: 5px;
+        width: 22%;
+        height: 600px;
+        min-height: 600px;
+        border: 1px dashed #808080;
+    }
+
+    .page_body #menu li{
+    margin-left:25px;
+    font-size:20px;
+    list-style: none;
+}
+.page_body #menu #top_li{
+    font-size:30px;
+    background-color:#e1e0e0;
+    list-style: none;
+    margin-left:0;
+}
+
+    .page_body #text {
+        float: right;
+        margin: 5px;
+        width: 74%;
+        height: 600px;
+        min-height: 600px;
+        border: 1px dashed #808080;
+        overflow:auto
+    }
+     .page_body #text #text_top {
+         margin:0 auto;
+         text-align:center;
+         width:auto;
+     }
+    .page_bottom{
+         min-height:35px;
+         background-color:#0094ff;
+         color:white;
+         font-size:20px;
+         text-align:center;
+         margin-top:2px;
+         
+    }
