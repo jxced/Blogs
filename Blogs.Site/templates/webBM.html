@@ -5,6 +5,19 @@
     <title></title>
 	<meta charset="utf-8" />
     <link href="/style/StyleWebBM.css" rel="stylesheet" />
+    <script type="text/javascript" language="javascript">
+        function hiddenLI() {
+            var u = document.getElementById("li1");
+            if (u.style.display=="none") {
+                u.style.display = "";
+                document.getElementById("li2").style.display = "";
+            } else {
+                u.style.display = "none";
+                document.getElementById("li2").style.display = "none";
+            }
+           
+        }
+    </script>
 </head>
 <body>
     <div class="page_top">
@@ -12,23 +25,24 @@
         <span><a href="#">退出</a></span><span><a href="#">博客首页</a></span><span>登陆</span> 
 </div>
     <div class="page_body">
-        <div id="titel">博客后台管理</div>
+        <div h id="titel">博客后台管理</div>
         <div id="menu">
             <ul>
-                <li id="top_li">日志管理</li>
-                <li>文章分类管理</li>
-                <li>文章管理</li>
+                <li id="top_li" ><a href="javascript:void(0);" onclick="hiddenLI()"> 日志管理</a></li>
+                <li  id="li1" ><a href="#">文章分类管理</a></li>
+                <li  id="li2"><a href="#">文章管理</a></li>
             </ul>
             <ul>
                 <li id="top_li"> 相册管理</li>
-                <li>相册列表管理</li>
-                <li>上传照片</li>
+                <li id="li3"><a href="#">相册列表管理</a></li>
+                <li id="li4"><a href="#">上传照片</a></li>
             </ul>
         </div>
         <div id="text">
-            <div id="text_top"><input  type="button"  value="新增" onclick="window.location='p.ashx?id='+id"/><input type="button"  value="批量删除" onclick="window.location='p.ashx?id='+id" /></div>
-            <div></div>
-        </div> 
+            <table id="text_top"><tr ><td><input type="button" value="新增" onclick="window.location='p.ashx?id='+id" /><input type="button" value="批量删除" onclick="window.location='p.ashx?id='+id" /></td></tr></table>
+            <!--<div id="text_main"></div>-->
+            <!--<div></div>-->
+        </div>
     </div>
     <div class="page_bottom">版权所有</div>
 

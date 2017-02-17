@@ -25,7 +25,10 @@ div {
         .page_top span a {
             text-decoration: none;
         }
-
+a{
+    text-decoration:none;
+    color:#0094ff;
+}
 a:hover {
     color: #ff0000;
 }
@@ -50,34 +53,46 @@ a:hover {
         height: 600px;
         min-height: 600px;
         border: 1px dashed #808080;
+        color:#0094ff;
     }
 
     .page_body #menu li{
-    margin-left:25px;
+    margin-left:22px;
     font-size:20px;
     list-style: none;
+    
 }
 .page_body #menu #top_li{
-    font-size:30px;
+    font-size:26px;
     background-color:#e1e0e0;
     list-style: none;
     margin-left:0;
+    
 }
 
     .page_body #text {
         float: right;
         margin: 5px;
-        width: 74%;
-        height: 600px;
-        min-height: 600px;
+        width: 74.5%;
+        /*height: 600px;*/
+        min-height: 595px;
         border: 1px dashed #808080;
-        overflow:auto
+        overflow:auto;
+       padding:2px;   
     }
-     .page_body #text #text_top {
+    .page_body  table {
+         width:100%;
+         border:1px solid #0094ff;
+         border-collapse:collapse;
          margin:0 auto;
-         text-align:center;
-         width:auto;
+         
      }
+    .page_body  table td{
+        text-align:center;
+    }
+    input {
+        margin:1px;
+    }
     .page_bottom{
          min-height:35px;
          background-color:#0094ff;
