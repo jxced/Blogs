@@ -25,7 +25,7 @@
         <span><a href="#">退出</a></span><span><a href="#">博客首页</a></span><span>登陆</span> 
 </div>
     <div class="page_body">
-        <div h id="titel">博客后台管理</div>
+        <div  id="titel">博客后台管理</div>
         <div id="menu">
             <ul>
                 <li id="top_li" ><a href="javascript:void(0);" onclick="hiddenLI()"> 日志管理</a></li>
@@ -39,7 +39,30 @@
             </ul>
         </div>
         <div id="text">
-            <table id="text_top"><tr ><td><input type="button" value="新增" onclick="window.location='p.ashx?id='+id" /><input type="button" value="批量删除" onclick="window.location='p.ashx?id='+id" /></td></tr></table>
+            <table id="text_top">
+                <tr ><td>
+                    <input type="button" value="新增" onclick="window.location='p.ashx?id='+id" />
+                    <input type="submit" value="批量删除" />
+                </td></tr>
+            </table>
+            <table id="text_content">
+                <tr id="tr">
+                    <th>文章类别ID</th>
+                    <th>作者ID</th>
+                    <th>作者ID</th>
+                    <th>博客分类名称</th>
+                    <th>状态</th>
+                    <th>添加日期</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+            </table>
             <!--<div id="text_main"></div>-->
             <!--<div></div>-->
         </div>
