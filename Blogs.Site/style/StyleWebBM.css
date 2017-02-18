@@ -3,10 +3,10 @@
     margin: 0;
 }
 
-div {
+.page_top,.page_body,.page_bottom {
     width: 960px;
     border: 1px solid #0094ff;
-    margin: 0px auto;
+    margin: 0 auto;
 }
 
 .page_top {

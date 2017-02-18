@@ -14,7 +14,7 @@ namespace Blogs.Site.handler
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/html";
-            string sql=""
+            //string sql=""
             context.Response.Write("Hello World");
         }
 
