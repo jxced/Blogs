@@ -9,7 +9,7 @@ div {
     margin: 0px auto;
 }
 
-.page_top{
+.page_top {
     min-height: 35px;
     margin-top: 10px;
     /*background-color:#0094ff;*/
@@ -25,13 +25,15 @@ div {
         .page_top span a {
             text-decoration: none;
         }
-a{
-    text-decoration:none;
-    color:#0094ff;
+
+a {
+    text-decoration: none;
+    color: #0094ff;
 }
-a:hover {
-    color: #ff0000;
-}
+
+    a:hover {
+        color: #ff0000;
+    }
 
 .page_body {
     height: auto;
@@ -53,22 +55,21 @@ a:hover {
         height: 600px;
         min-height: 600px;
         border: 1px dashed #808080;
-        color:#0094ff;
+        color: #0094ff;
     }
 
-    .page_body #menu li{
-    margin-left:22px;
-    font-size:20px;
-    list-style: none;
-    
-}
-.page_body #menu #top_li{
-    font-size:26px;
-    background-color:#e1e0e0;
-    list-style: none;
-    margin-left:0;
-    
-}
+        .page_body #menu li {
+            margin-left: 22px;
+            font-size: 20px;
+            list-style: none;
+        }
+
+        .page_body #menu #top_li {
+            font-size: 26px;
+            background-color: #e1e0e0;
+            list-style: none;
+            margin-left: 0;
+        }
 
     .page_body #text {
         float: right;
@@ -77,33 +78,29 @@ a:hover {
         /*height: 600px;*/
         min-height: 595px;
         border: 1px dashed #808080;
-        overflow:auto;
-       padding:2px;   
+        overflow: auto;
+        padding: 2px;
     }
-    .page_body  table {
-         width:100%;
-         border:1px solid #0094ff;
-         border-collapse:collapse;
-         margin:0 auto;
-         
-     }
-    .page_body  table td{
-        text-align:center;
+/*#text_top{
+        width:710px
+    }*/
+#text_content, #text_top {
+    width: 715px;
+    border: 1px solid #0094ff;
+    border-collapse: collapse;
+    margin: 0 auto;
+    text-align: center;
+}
+
+    #text_content th {
+        margin: 0 auto;
+        background-color: #e1e0e0;
+        border: 1px solid #0094ff;
     }
-    .page_body #textTop{
-        min-width:715px;
-        width:715px;
-        text-align:center;
-        border-collapse:collapse;
-    }
-    #textContent{
-         min-width:715px;
-        width:715px;
-        border-collapse:collapse;
-    }
-    #textContent span{
-        width:auto;
-        border:1px solid #0094ff;
+
+    #text_content td {
+        margin: 0 auto;
+        border: 1px solid #0094ff;
     }
     input {
         margin:1px;
