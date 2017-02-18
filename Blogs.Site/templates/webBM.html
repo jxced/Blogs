@@ -21,7 +21,7 @@
 </head>
 <body>
     <div class="page_top">
-        <!--浮动时候，第一个块先浮动到右边，然后第二个紧接着浮动，最后一个最后浮动：“退出-》博客首页-》登陆“，浮动后变成”登陆-》博客首页-》退出“-->
+        <!--右浮动时候，左边第一个块先浮动到右边，然后第二个紧接着浮动，最后一个最后浮动：原来                                                “退出-》博客首页-》登陆“，浮动后变成”登陆-》博客首页-》退出“-->
         <span><a href="#">退出</a></span><span><a href="#">博客首页</a></span><span>登陆</span> 
 </div>
     <div class="page_body">
@@ -39,9 +39,17 @@
             </ul>
         </div>
         <div id="text">
-            <table id="text_top"><tr ><td><input type="button" value="新增" onclick="window.location='p.ashx?id='+id" /><input type="button" value="批量删除" onclick="window.location='p.ashx?id='+id" /></td></tr></table>
+            <div id="textTop">
+                <input type="button" value="新增" onclick="window.location='p.ashx?id='+id" />
+                <span></span>
+                <input type="button" value="批量删除" onclick="window.location='p.ashx?id='+id" />
+            </div>
+            <!--<table id="text_top"><tr ><td><input type="button" value="新增" onclick="window.location='p.ashx?id='+id" /><input type="button" value="批量删除" onclick="window.location='p.ashx?id='+id" /></td></tr></table>-->
             <!--<div id="text_main"></div>-->
             <!--<div></div>-->
+            <div id="textContent">
+                <span class="spantext">序号</span><span class="spantext">序号</span><span class="spantext">序号</span><span class="spantext">序号</span><span class="spantext">序号</span>
+            </div>
         </div>
     </div>
     <div class="page_bottom">版权所有</div>

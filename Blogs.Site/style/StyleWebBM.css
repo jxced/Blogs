@@ -90,6 +90,21 @@ a:hover {
     .page_body  table td{
         text-align:center;
     }
+    .page_body #textTop{
+        min-width:715px;
+        width:715px;
+        text-align:center;
+        border-collapse:collapse;
+    }
+    #textContent{
+         min-width:715px;
+        width:715px;
+        border-collapse:collapse;
+    }
+    #textContent span{
+        width:auto;
+        border:1px solid #0094ff;
+    }
     input {
         margin:1px;
     }
