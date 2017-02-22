@@ -19,7 +19,8 @@ namespace Blogs.Site.handler
             string sql = @"SELECT   id, author, name, remark, statu, isdel, addtime
 FROM      BlogArticleCate";
             string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["blogs"].ConnectionString;
-            string connstr = @"date source=D:\WorkRoom\Blogs\db\BlogsDb.db;password=123;";
+            string connstr = @"data source=D:\WorkRoom\Blogs\db\BlogsDb.db;password=123;";
+            //;password=123;Pooling=true;FailIfMissing=false
             DataTable tb = new DataTable();
             using (SQLiteConnection conn=new SQLiteConnection(connstr))
             {
@@ -35,10 +36,10 @@ FROM      BlogArticleCate";
                     sb.Append("<td>" + row["id"] + "</td>");
                 }
             }
-            string 
-            string newstr = sb.ToString();
-            newstr=newstr.Replace("${trs}", newstr);
-            context.Response.Write(newstr);
+            string PhyPath = context.Server.MapPath("/templates/webBM.html");
+            string htmlText = System.IO.File.ReadAllText(PhyPath);
+            htmlText = htmlText.Replace("${trs}", sb.ToString());
+            context.Response.Write(htmlText);
         }
 
         public bool IsReusable
