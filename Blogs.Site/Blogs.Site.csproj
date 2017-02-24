@@ -98,12 +98,15 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="default.aspx" />
+    <Content Include="js\jquery-1.9.1.js" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="handler\article.ashx" />
-    <Content Include="handler\blogArticleCate.ashx" />
+    <Content Include="handler\BlogArticleCategory.ashx" />
+    <Content Include="handler\DelArticleCategory.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -113,15 +116,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="style\StyleWebBM.css" />
+    <Content Include="templates\HtmlPage1.html" />
     <Content Include="templates\webBM.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="handler\article.ashx.cs">
       <DependentUpon>article.ashx</DependentUpon>
     </Compile>
-    <Compile Include="handler\blogArticleCate.ashx.cs">
-      <DependentUpon>blogArticleCate.ashx</DependentUpon>
+    <Compile Include="handler\BlogArticleCategory.ashx.cs">
+      <DependentUpon>BlogArticleCategory.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\DelArticleCategory.ashx.cs">
+      <DependentUpon>DelArticleCategory.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
