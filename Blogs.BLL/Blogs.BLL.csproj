@@ -40,7 +40,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlogArticle.cs" />
+    <Compile Include="BlogArticleCategory.cs" />
+    <Compile Include="BlogCommentArticle.cs" />
+    <Compile Include="BlogCommentPhoto.cs" />
+    <Compile Include="BlogPhoto.cs" />
+    <Compile Include="BlogPhotoAlblum.cs" />
+    <Compile Include="BlogUser.cs" />
+    <Compile Include="Enumeration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Blogs.Common\Blogs.Common.csproj">
+      <Project>{63612450-ef69-407a-a0fd-1293e76269aa}</Project>
+      <Name>Blogs.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blogs.DAL\Blogs.DAL.csproj">
+      <Project>{18ec6e54-55ea-4273-87a8-b411f3a17f41}</Project>
+      <Name>Blogs.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blogs.Model\Blogs.Model.csproj">
+      <Project>{7265d2bb-4830-4c08-ba73-6a5f0903df44}</Project>
+      <Name>Blogs.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -7,12 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <script type="text/javascript">
-        onload=function () {
-            window.location = "/handler/BlogArticleCategory.ashx";
-        }
+        //onload=function () {
+        //    window.location = "/handler/BlogArticleCategory.ashx";
+        //}
     </script>
 </head>
 <body>
-    
+    <a href="WebForm1.aspx">跳转</a>
 </body>
 </html>

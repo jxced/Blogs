@@ -28,9 +28,9 @@ namespace Blogs.Model
 		#region Model
 		private int _id;
 		private int _author;
-		private string _name;
+		private string _categoryName;
 		private string _remark;
-		private int _statu=1;
+		private int _status=1;
 		private bool _isdel= false;
 		private DateTime _addtime;
 		/// <summary>
@@ -52,10 +52,10 @@ namespace Blogs.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public string name
-		{
-			set{ _name=value;}
-			get{return _name;}
+		public string CategoryName
+        {
+			set{ _categoryName = value;}
+			get{return _categoryName; }
 		}
 		/// <summary>
 		/// 
@@ -68,10 +68,10 @@ namespace Blogs.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int statu
+		public int status
 		{
-			set{ _statu=value;}
-			get{return _statu;}
+			set{ _status=value;}
+			get{return _status;}
 		}
 		/// <summary>
 		/// 

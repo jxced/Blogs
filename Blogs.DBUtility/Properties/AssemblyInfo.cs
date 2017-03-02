@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("Blogs.Commom")]
+[assembly: AssemblyTitle("Blogs.DBUtility")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Blogs.Commom")]
+[assembly: AssemblyProduct("Blogs.DBUtility")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("3aae21fa-aad3-4b1d-8e33-2618387ef2a9")]
+[assembly: Guid("b36cea11-544a-4d21-91f7-576602a65327")]
 
 // 程序集的版本信息由下列四个值组成: 
 //

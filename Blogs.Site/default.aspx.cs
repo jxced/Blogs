@@ -11,7 +11,8 @@ namespace Blogs.Site
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string url = Request.Url.ToString();
+            Response.Write(url);
         }
     }
 }
