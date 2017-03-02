@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlogArticle.cs" />
-    <Compile Include="BlogArticleCate.cs" />
+    <Compile Include="BlogArticleCategory.cs" />
     <Compile Include="BlogCommentArticle.cs" />
     <Compile Include="BlogCommentPhoto.cs" />
     <Compile Include="BlogPhoto.cs" />

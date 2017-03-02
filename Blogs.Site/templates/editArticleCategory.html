@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="/style/StyleWebBM.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="page_top">
+        <!--右浮动时候，左边第一个块先浮动到右边，然后第二个紧接着浮动，最后一个最后浮动：原来“退出-》博客首页-》登陆“，浮动后变成”登陆-》博客首页-》退出“-->
+        <span><a href="#">退出</a></span><span><a href="#">博客首页</a></span><span>登陆</span>
+    </div>
+    <div class="page_body">
+        <div id="titel">博客后台管理</div>
+        <div id="menu">
+            <ul>
+                <li id="top_li"><a href="javascript:void(0);" onclick="hidd('li2')"> 日志管理</a></li>
+                <li class="li2"><a href="#">文章分类管理</a></li>
+                <li class="li2"><a href="#">文章管理</a></li>
+            </ul>
+            <ul>
+                <li id="top_li"><a href="javascript:void(0);" onclick="hidd('li3')"> 相册管理</a> </li>
+                <li class="li3"><a href="#">相册列表管理</a></li>
+                <li class="li3"><a href="#">上传照片</a></li>
+            </ul>
+        </div>
+        <div id="text">
+            <form action="/handler/DelArticleCategory.ashx" method="post">
+                <table id="text_content">
+                    <tr>
+                        <th style="width:85px;">作者</th><td><input  type="text" name="author" value="${author}"/></td>
+                    </tr>
+                    <tr>
+                        <th style="width:140px;">博客分类名称</th>
+                    </tr>
+                    <tr>
+                        <th>状态</th>
+                    </tr>
+                    <tr>
+                        <th style="width:150px;">添加日期</th>
+                    </tr>
+                    <tr><th style="width:150px;">备注</th></tr>
+                    <tr></tr>
+                </table>
+            </form>
+
+        </div>
+    </div>
+    <div class="page_bottom">版权所有</div>
+</body>
+</html>

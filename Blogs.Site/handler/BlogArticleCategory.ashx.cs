@@ -41,7 +41,7 @@ namespace Blogs.Site.handler
                     sb.Append("<td>" + row["categoryName"] + "</td>");
                     sb.Append("<td>" + row["e_cname"] + " </td>");
                     sb.Append("<td>" + row["addtime"] + " </td>");
-                    sb.Append("<td><a href='categoryEdit.ashx?id=" + row["id"] +"'>编辑</a>|<a href='categoryDel.ashx?id=" + row["id"] + "'>删除</a> </td>");
+                    sb.Append("<td><a href='EditArticleCategory.ashx?id=" + row["id"] + "'>编辑</a>|<a href='DelArticleCategory.ashx?id=" + row["id"] + "'>删除</a> </td>");
                     sb.Append("</tr>");
                 }
             }

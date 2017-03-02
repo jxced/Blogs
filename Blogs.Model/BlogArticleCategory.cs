@@ -21,9 +21,9 @@ namespace Blogs.Model
 	/// BlogArticleCate:实体类(属性说明自动提取数据库字段的描述信息)
 	/// </summary>
 	[Serializable]
-	public partial class BlogArticleCate
+	public partial class BlogArticleCategory
 	{
-		public BlogArticleCate()
+		public BlogArticleCategory()
 		{}
 		#region Model
 		private int _id;

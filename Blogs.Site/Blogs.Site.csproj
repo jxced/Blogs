@@ -107,6 +107,7 @@
     <Content Include="handler\article.ashx" />
     <Content Include="handler\BlogArticleCategory.ashx" />
     <Content Include="handler\DelArticleCategory.ashx" />
+    <Content Include="handler\EditArticleCategory.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -116,6 +117,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="style\StyleWebBM.css" />
+    <Content Include="templates\ArticleCategoryEdit.html" />
+    <Content Include="templates\editArticleCategory.html" />
     <Content Include="templates\HtmlPage1.html" />
     <Content Include="templates\webBM.html" />
     <Content Include="Web.config" />
@@ -136,6 +139,9 @@
     </Compile>
     <Compile Include="handler\DelArticleCategory.ashx.cs">
       <DependentUpon>DelArticleCategory.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handler\EditArticleCategory.ashx.cs">
+      <DependentUpon>EditArticleCategory.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
