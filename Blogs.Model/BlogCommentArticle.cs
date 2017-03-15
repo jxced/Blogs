@@ -15,7 +15,7 @@ namespace Blogs.Model
 		private int _cmaauthor;
 		private string _cmatitle;
 		private string _cmacontent;
-		private DateTime _cmaaddtime= Convert.ToDateTime(datetime("now"));
+		private DateTime _cmaaddtime;
 		private bool _cmaisdel= false;
 		/// <summary>
 		/// 

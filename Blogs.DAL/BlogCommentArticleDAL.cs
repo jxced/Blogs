@@ -2,7 +2,7 @@
 using System.Data;
 using System.Text;
 using System.Data.SQLite;
-using Maticsoft.DBUtility;//Please add references
+using Blogs.DBUtility;//Please add references
 namespace Blogs.DAL
 {
 	/// <summary>
@@ -259,7 +259,7 @@ namespace Blogs.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			object obj = DbHelperSQL.GetSingle(strSql.ToString());
+			object obj = DbHelperSQLite.GetSingle(strSql.ToString());
 			if (obj == null)
 			{
 				return 0;

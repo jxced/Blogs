@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Blogs.Model
+namespace Blogs.Common
 {
-    public class Class1
+    class Class1
     {
     }
 }

@@ -22,8 +22,8 @@ namespace Blogs.Model
 		private string _atag;
 		private int? _acick=0;
 		private int? _astatu=2;
-		private DateTime? _aaddtime= Convert.ToDateTime(datetime("now"));
-		private DateTime? _aupdatetime= Convert.ToDateTime(datetime("now"));
+		private DateTime? _aaddtime;
+		private DateTime? _aupdatetime;
 		private bool _aisdel= false;
 		private string _ahtmlsrc;
 		/// <summary>

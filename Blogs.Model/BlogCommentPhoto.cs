@@ -15,7 +15,7 @@ namespace Blogs.Model
 		private int _cmpphoto;
 		private string _cmptitle;
 		private string _cmpcontent;
-		private DateTime _cmpaddtime= Convert.ToDateTime(datetime("now"));
+		private DateTime _cmpaddtime;
 		private bool _cmpisdel= false;
 		/// <summary>
 		/// 

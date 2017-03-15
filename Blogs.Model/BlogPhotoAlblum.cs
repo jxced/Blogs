@@ -17,7 +17,7 @@ namespace Blogs.Model
 		private string _pacoversrc="no.jpg";
 		private int _paphotonum=0;
 		private int _pastatu=1;
-		private DateTime _paaddtime= Convert.ToDateTime(datetime("now"));
+		private DateTime _paaddtime;
 		private bool _paisdel= false;
 		/// <summary>
 		/// 

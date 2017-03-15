@@ -16,7 +16,7 @@ namespace Blogs.Model
 		private string _remark;
 		private int _status=1;
 		private bool _isdel= false;
-		private DateTime _addtime= Convert.ToDateTime(datetime("now"));
+		private DateTime _addtime;
 		/// <summary>
 		/// 
 		/// </summary>

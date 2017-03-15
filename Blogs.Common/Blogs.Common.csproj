@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9ED317CB-A744-4777-AADE-BA5A3A3F821D}</ProjectGuid>
+    <ProjectGuid>{80974B9A-6CD7-4D52-9D5C-F48137E912BF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Blogs.BLL</RootNamespace>
-    <AssemblyName>Blogs.BLL</AssemblyName>
+    <RootNamespace>Blogs.Common</RootNamespace>
+    <AssemblyName>Blogs.Common</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -59,29 +59,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlogArticleBLL.cs" />
-    <Compile Include="BlogArticleCategoryBLL.cs" />
-    <Compile Include="BlogCommentArticleBLL.cs" />
-    <Compile Include="BlogCommentPhotoBLL.cs" />
-    <Compile Include="BlogPhotoAlblumBLL.cs" />
-    <Compile Include="BlogPhotoBLL.cs" />
-    <Compile Include="BlogUserBLL.cs" />
-    <Compile Include="EnumerationBLL.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Blogs.Common\Blogs.Common.csproj">
-      <Project>{80974b9a-6cd7-4d52-9d5c-f48137e912bf}</Project>
-      <Name>Blogs.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Blogs.DAL\Blogs.DAL.csproj">
-      <Project>{e41782ec-9a3e-45ff-aabc-ee142bfcd1a2}</Project>
-      <Name>Blogs.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Blogs.Model\Blogs.Model.csproj">
-      <Project>{f4c020b9-aead-429b-85cd-a28b6681b26a}</Project>
-      <Name>Blogs.Model</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

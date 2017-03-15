@@ -17,7 +17,7 @@ namespace Blogs.Model
 		private string _premark;
 		private string _psrc;
 		private int _pstatu;
-		private DateTime _paddtime= Convert.ToDateTime(datetime("now"));
+		private DateTime _paddtime;
 		private bool _pisdel= false;
 		/// <summary>
 		/// 

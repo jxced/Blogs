@@ -17,8 +17,8 @@ namespace Blogs.Model
 		private string _email;
 		private bool _islock= false;
 		private bool _isdel= false;
-		private DateTime? _addtime= Convert.ToDateTime(datetime("now"));
-		private DateTime? _lastlogintime= Convert.ToDateTime(datetime("now"));
+		private DateTime? _addtime;
+		private DateTime? _lastlogintime;
 		private string _lastloginip;
 		/// <summary>
 		/// 
