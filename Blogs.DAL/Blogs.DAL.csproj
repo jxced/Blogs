@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{18EC6E54-55EA-4273-87A8-B411F3A17F41}</ProjectGuid>
+    <ProjectGuid>{E41782EC-9A3E-45FF-AABC-EE142BFCD1A2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Blogs.DAL</RootNamespace>
     <AssemblyName>Blogs.DAL</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -32,10 +32,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.SQLite, Version=1.0.101.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Users\Administrator\Documents\Visual Studio 2015\Projects\Cater\lib\System.Data.SQLite.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,36 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlogArticle.cs" />
-    <Compile Include="BlogArticleCategory.cs" />
-    <Compile Include="BlogCommentArticle.cs" />
-    <Compile Include="BlogCommentPhoto.cs" />
-    <Compile Include="BlogPhoto.cs" />
-    <Compile Include="BlogPhotoAlblum.cs" />
-    <Compile Include="BlogUser.cs" />
-    <Compile Include="Enumeration.cs" />
+    <Compile Include="BlogArticleCategoryDAL.cs" />
+    <Compile Include="BlogArticleDAL.cs" />
+    <Compile Include="BlogCommentArticleDAL.cs" />
+    <Compile Include="BlogCommentPhotoDAL.cs" />
+    <Compile Include="BlogPhotoAlblumDAL.cs" />
+    <Compile Include="BlogPhotoDAL.cs" />
+    <Compile Include="BlogUserDAL.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="EnumerationDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Blogs.Common\Blogs.Common.csproj">
-      <Project>{63612450-ef69-407a-a0fd-1293e76269aa}</Project>
-      <Name>Blogs.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Blogs.DBUtility\Blogs.DBUtility.csproj">
-      <Project>{b36cea11-544a-4d21-91f7-576602a65327}</Project>
-      <Name>Blogs.DBUtility</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Blogs.Model\Blogs.Model.csproj">
-      <Project>{7265d2bb-4830-4c08-ba73-6a5f0903df44}</Project>
-      <Name>Blogs.Model</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

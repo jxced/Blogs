@@ -108,7 +108,6 @@
     <Content Include="handler\BlogArticleCategory.ashx" />
     <Content Include="handler\DelArticleCategory.ashx" />
     <Content Include="handler\EditArticleCategory.ashx" />
-    <Content Include="WebForm1.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -145,31 +144,6 @@
       <DependentUpon>EditArticleCategory.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Blogs.BLL\Blogs.BLL.csproj">
-      <Project>{2c96a9ec-6b1c-41a9-86e8-f30fea72d629}</Project>
-      <Name>Blogs.BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Blogs.Common\Blogs.Common.csproj">
-      <Project>{63612450-ef69-407a-a0fd-1293e76269aa}</Project>
-      <Name>Blogs.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Blogs.DAL\Blogs.DAL.csproj">
-      <Project>{18ec6e54-55ea-4273-87a8-b411f3a17f41}</Project>
-      <Name>Blogs.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Blogs.Model\Blogs.Model.csproj">
-      <Project>{7265d2bb-4830-4c08-ba73-6a5f0903df44}</Project>
-      <Name>Blogs.Model</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

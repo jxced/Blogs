@@ -2,15 +2,15 @@
 using System.Data;
 using System.Text;
 using System.Data.SQLite;
-using Blogs.DBUtility;//Please add references
+using Maticsoft.DBUtility;//Please add references
 namespace Blogs.DAL
 {
 	/// <summary>
-	/// 数据访问类:BlogPhoto
+	/// 数据访问类:BlogPhotoDAL
 	/// </summary>
-	public partial class BlogPhoto
+	public partial class BlogPhotoDAL
 	{
-		public BlogPhoto()
+		public BlogPhotoDAL()
 		{}
 		#region  BasicMethod
 
@@ -29,9 +29,10 @@ namespace Blogs.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select count(1) from BlogPhoto");
-			strSql.Append(" where pid=@pid ");
+			strSql.Append(" where pid=@pid");
 			SQLiteParameter[] parameters = {
-					new SQLiteParameter("@pid", DbType.Int32,8)			};
+					new SQLiteParameter("@pid", DbType.Int32,4)
+			};
 			parameters[0].Value = pid;
 
 			return DbHelperSQLite.Exists(strSql.ToString(),parameters);
@@ -41,15 +42,15 @@ namespace Blogs.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(Blogs.Model.BlogPhoto model)
+		public int Add(Blogs.Model.BlogPhoto model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into BlogPhoto(");
-			strSql.Append("pid,pauthor,palbum,ptitle,premark,psrc,pstatu,paddtime,pisdel)");
+			strSql.Append("pauthor,palbum,ptitle,premark,psrc,pstatu,paddtime,pisdel)");
 			strSql.Append(" values (");
-			strSql.Append("@pid,@pauthor,@palbum,@ptitle,@premark,@psrc,@pstatu,@paddtime,@pisdel)");
+			strSql.Append("@pauthor,@palbum,@ptitle,@premark,@psrc,@pstatu,@paddtime,@pisdel)");
+			strSql.Append(";select LAST_INSERT_ROWID()");
 			SQLiteParameter[] parameters = {
-					new SQLiteParameter("@pid", DbType.Int32,8),
 					new SQLiteParameter("@pauthor", DbType.Int32,8),
 					new SQLiteParameter("@palbum", DbType.Int32,8),
 					new SQLiteParameter("@ptitle", DbType.String),
@@ -57,25 +58,24 @@ namespace Blogs.DAL
 					new SQLiteParameter("@psrc", DbType.String),
 					new SQLiteParameter("@pstatu", DbType.Int32,4),
 					new SQLiteParameter("@paddtime", DbType.DateTime),
-					new SQLiteParameter("@pisdel", DbType.bit,1)};
-			parameters[0].Value = model.pid;
-			parameters[1].Value = model.pauthor;
-			parameters[2].Value = model.palbum;
-			parameters[3].Value = model.ptitle;
-			parameters[4].Value = model.premark;
-			parameters[5].Value = model.psrc;
-			parameters[6].Value = model.pstatu;
-			parameters[7].Value = model.paddtime;
-			parameters[8].Value = model.pisdel;
+					new SQLiteParameter("@pisdel", DbType.Boolean)};
+			parameters[0].Value = model.pauthor;
+			parameters[1].Value = model.palbum;
+			parameters[2].Value = model.ptitle;
+			parameters[3].Value = model.premark;
+			parameters[4].Value = model.psrc;
+			parameters[5].Value = model.pstatu;
+			parameters[6].Value = model.paddtime;
+			parameters[7].Value = model.pisdel;
 
-			int rows=DbHelperSQLite.ExecuteSql(strSql.ToString(),parameters);
-			if (rows > 0)
+			object obj = DbHelperSQLite.GetSingle(strSql.ToString(),parameters);
+			if (obj == null)
 			{
-				return true;
+				return 0;
 			}
 			else
 			{
-				return false;
+				return Convert.ToInt32(obj);
 			}
 		}
 		/// <summary>
@@ -93,7 +93,7 @@ namespace Blogs.DAL
 			strSql.Append("pstatu=@pstatu,");
 			strSql.Append("paddtime=@paddtime,");
 			strSql.Append("pisdel=@pisdel");
-			strSql.Append(" where pid=@pid ");
+			strSql.Append(" where pid=@pid");
 			SQLiteParameter[] parameters = {
 					new SQLiteParameter("@pauthor", DbType.Int32,8),
 					new SQLiteParameter("@palbum", DbType.Int32,8),
@@ -102,7 +102,7 @@ namespace Blogs.DAL
 					new SQLiteParameter("@psrc", DbType.String),
 					new SQLiteParameter("@pstatu", DbType.Int32,4),
 					new SQLiteParameter("@paddtime", DbType.DateTime),
-					new SQLiteParameter("@pisdel", DbType.bit,1),
+					new SQLiteParameter("@pisdel", DbType.Boolean),
 					new SQLiteParameter("@pid", DbType.Int32,8)};
 			parameters[0].Value = model.pauthor;
 			parameters[1].Value = model.palbum;
@@ -133,9 +133,10 @@ namespace Blogs.DAL
 			
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("delete from BlogPhoto ");
-			strSql.Append(" where pid=@pid ");
+			strSql.Append(" where pid=@pid");
 			SQLiteParameter[] parameters = {
-					new SQLiteParameter("@pid", DbType.Int32,8)			};
+					new SQLiteParameter("@pid", DbType.Int32,4)
+			};
 			parameters[0].Value = pid;
 
 			int rows=DbHelperSQLite.ExecuteSql(strSql.ToString(),parameters);
@@ -176,9 +177,10 @@ namespace Blogs.DAL
 			
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select pid,pauthor,palbum,ptitle,premark,psrc,pstatu,paddtime,pisdel from BlogPhoto ");
-			strSql.Append(" where pid=@pid ");
+			strSql.Append(" where pid=@pid");
 			SQLiteParameter[] parameters = {
-					new SQLiteParameter("@pid", DbType.Int32,8)			};
+					new SQLiteParameter("@pid", DbType.Int32,4)
+			};
 			parameters[0].Value = pid;
 
 			Blogs.Model.BlogPhoto model=new Blogs.Model.BlogPhoto();

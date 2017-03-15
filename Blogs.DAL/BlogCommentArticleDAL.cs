@@ -2,15 +2,15 @@
 using System.Data;
 using System.Text;
 using System.Data.SQLite;
-using Blogs.DBUtility;//Please add references
+using Maticsoft.DBUtility;//Please add references
 namespace Blogs.DAL
 {
 	/// <summary>
-	/// 数据访问类:BlogCommentArticle
+	/// 数据访问类:BlogCommentArticleDAL
 	/// </summary>
-	public partial class BlogCommentArticle
+	public partial class BlogCommentArticleDAL
 	{
-		public BlogCommentArticle()
+		public BlogCommentArticleDAL()
 		{}
 		#region  BasicMethod
 
@@ -29,9 +29,10 @@ namespace Blogs.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select count(1) from BlogCommentArticle");
-			strSql.Append(" where cmaid=@cmaid ");
+			strSql.Append(" where cmaid=@cmaid");
 			SQLiteParameter[] parameters = {
-					new SQLiteParameter("@cmaid", DbType.Int32,8)			};
+					new SQLiteParameter("@cmaid", DbType.Int32,4)
+			};
 			parameters[0].Value = cmaid;
 
 			return DbHelperSQLite.Exists(strSql.ToString(),parameters);
@@ -41,37 +42,36 @@ namespace Blogs.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(Blogs.Model.BlogCommentArticle model)
+		public int Add(Blogs.Model.BlogCommentArticle model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into BlogCommentArticle(");
-			strSql.Append("cmaid,cmaarticle,cmaauthor,cmatitle,cmacontent,cmaaddtime,cmaisdel)");
+			strSql.Append("cmaarticle,cmaauthor,cmatitle,cmacontent,cmaaddtime,cmaisdel)");
 			strSql.Append(" values (");
-			strSql.Append("@cmaid,@cmaarticle,@cmaauthor,@cmatitle,@cmacontent,@cmaaddtime,@cmaisdel)");
+			strSql.Append("@cmaarticle,@cmaauthor,@cmatitle,@cmacontent,@cmaaddtime,@cmaisdel)");
+			strSql.Append(";select LAST_INSERT_ROWID()");
 			SQLiteParameter[] parameters = {
-					new SQLiteParameter("@cmaid", DbType.Int32,8),
 					new SQLiteParameter("@cmaarticle", DbType.Int32,4),
 					new SQLiteParameter("@cmaauthor", DbType.Int32,4),
 					new SQLiteParameter("@cmatitle", DbType.String),
 					new SQLiteParameter("@cmacontent", DbType.String),
 					new SQLiteParameter("@cmaaddtime", DbType.DateTime),
-					new SQLiteParameter("@cmaisdel", DbType.bit,1)};
-			parameters[0].Value = model.cmaid;
-			parameters[1].Value = model.cmaarticle;
-			parameters[2].Value = model.cmaauthor;
-			parameters[3].Value = model.cmatitle;
-			parameters[4].Value = model.cmacontent;
-			parameters[5].Value = model.cmaaddtime;
-			parameters[6].Value = model.cmaisdel;
+					new SQLiteParameter("@cmaisdel", DbType.Boolean)};
+			parameters[0].Value = model.cmaarticle;
+			parameters[1].Value = model.cmaauthor;
+			parameters[2].Value = model.cmatitle;
+			parameters[3].Value = model.cmacontent;
+			parameters[4].Value = model.cmaaddtime;
+			parameters[5].Value = model.cmaisdel;
 
-			int rows=DbHelperSQLite.ExecuteSql(strSql.ToString(),parameters);
-			if (rows > 0)
+			object obj = DbHelperSQLite.GetSingle(strSql.ToString(),parameters);
+			if (obj == null)
 			{
-				return true;
+				return 0;
 			}
 			else
 			{
-				return false;
+				return Convert.ToInt32(obj);
 			}
 		}
 		/// <summary>
@@ -87,14 +87,14 @@ namespace Blogs.DAL
 			strSql.Append("cmacontent=@cmacontent,");
 			strSql.Append("cmaaddtime=@cmaaddtime,");
 			strSql.Append("cmaisdel=@cmaisdel");
-			strSql.Append(" where cmaid=@cmaid ");
+			strSql.Append(" where cmaid=@cmaid");
 			SQLiteParameter[] parameters = {
 					new SQLiteParameter("@cmaarticle", DbType.Int32,4),
 					new SQLiteParameter("@cmaauthor", DbType.Int32,4),
 					new SQLiteParameter("@cmatitle", DbType.String),
 					new SQLiteParameter("@cmacontent", DbType.String),
 					new SQLiteParameter("@cmaaddtime", DbType.DateTime),
-					new SQLiteParameter("@cmaisdel", DbType.bit,1),
+					new SQLiteParameter("@cmaisdel", DbType.Boolean),
 					new SQLiteParameter("@cmaid", DbType.Int32,8)};
 			parameters[0].Value = model.cmaarticle;
 			parameters[1].Value = model.cmaauthor;
@@ -123,9 +123,10 @@ namespace Blogs.DAL
 			
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("delete from BlogCommentArticle ");
-			strSql.Append(" where cmaid=@cmaid ");
+			strSql.Append(" where cmaid=@cmaid");
 			SQLiteParameter[] parameters = {
-					new SQLiteParameter("@cmaid", DbType.Int32,8)			};
+					new SQLiteParameter("@cmaid", DbType.Int32,4)
+			};
 			parameters[0].Value = cmaid;
 
 			int rows=DbHelperSQLite.ExecuteSql(strSql.ToString(),parameters);
@@ -166,9 +167,10 @@ namespace Blogs.DAL
 			
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select cmaid,cmaarticle,cmaauthor,cmatitle,cmacontent,cmaaddtime,cmaisdel from BlogCommentArticle ");
-			strSql.Append(" where cmaid=@cmaid ");
+			strSql.Append(" where cmaid=@cmaid");
 			SQLiteParameter[] parameters = {
-					new SQLiteParameter("@cmaid", DbType.Int32,8)			};
+					new SQLiteParameter("@cmaid", DbType.Int32,4)
+			};
 			parameters[0].Value = cmaid;
 
 			Blogs.Model.BlogCommentArticle model=new Blogs.Model.BlogCommentArticle();

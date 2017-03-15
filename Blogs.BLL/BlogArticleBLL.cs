@@ -1,33 +1,17 @@
-﻿/**  版本信息模板在安装目录下，可自行修改。
-* BlogPhoto.cs
-*
-* 功 能： N/A
-* 类 名： BlogPhoto
-*
-* Ver    变更日期             负责人  变更内容
-* ───────────────────────────────────
-* V0.01  2017/3/2 22:21:06   N/A    初版
-*
-* Copyright (c) 2012 Blogs Corporation. All rights reserved.
-*┌──────────────────────────────────┐
-*│　此技术信息为本公司机密信息，未经本公司书面同意禁止向第三方披露．　│
-*│　版权所有：动软卓越（北京）科技有限公司　　　　　　　　　　　　　　│
-*└──────────────────────────────────┘
-*/
-using System;
+﻿using System;
 using System.Data;
 using System.Collections.Generic;
-using Blogs.Common;
+using Maticsoft.Common;
 using Blogs.Model;
 namespace Blogs.BLL
 {
 	/// <summary>
-	/// BlogPhoto
+	/// BlogArticleBLL
 	/// </summary>
-	public partial class BlogPhoto
+	public partial class BlogArticleBLL
 	{
-		private readonly Blogs.DAL.BlogPhoto dal=new Blogs.DAL.BlogPhoto();
-		public BlogPhoto()
+		private readonly Blogs.DAL.BlogArticleDAL dal=new Blogs.DAL.BlogArticleDAL();
+		public BlogArticleBLL()
 		{}
 		#region  BasicMethod
 
@@ -42,15 +26,15 @@ namespace Blogs.BLL
 		/// <summary>
 		/// 是否存在该记录
 		/// </summary>
-		public bool Exists(int pid)
+		public bool Exists(int aid)
 		{
-			return dal.Exists(pid);
+			return dal.Exists(aid);
 		}
 
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(Blogs.Model.BlogPhoto model)
+		public int  Add(Blogs.Model.BlogArticle model)
 		{
 			return dal.Add(model);
 		}
@@ -58,7 +42,7 @@ namespace Blogs.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(Blogs.Model.BlogPhoto model)
+		public bool Update(Blogs.Model.BlogArticle model)
 		{
 			return dal.Update(model);
 		}
@@ -66,50 +50,50 @@ namespace Blogs.BLL
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		public bool Delete(int pid)
+		public bool Delete(int aid)
 		{
 			
-			return dal.Delete(pid);
+			return dal.Delete(aid);
 		}
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		public bool DeleteList(string pidlist )
+		public bool DeleteList(string aidlist )
 		{
-			return dal.DeleteList(Blogs.Common.PageValidate.SafeLongFilter(pidlist,0) );
+			return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(aidlist,0) );
 		}
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public Blogs.Model.BlogPhoto GetModel(int pid)
+		public Blogs.Model.BlogArticle GetModel(int aid)
 		{
 			
-			return dal.GetModel(pid);
+			return dal.GetModel(aid);
 		}
 
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public Blogs.Model.BlogPhoto GetModelByCache(int pid)
+		public Blogs.Model.BlogArticle GetModelByCache(int aid)
 		{
 			
-			string CacheKey = "BlogPhotoModel-" + pid;
-			object objModel = Blogs.Common.DataCache.GetCache(CacheKey);
+			string CacheKey = "BlogArticleModel-" + aid;
+			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
 				{
-					objModel = dal.GetModel(pid);
+					objModel = dal.GetModel(aid);
 					if (objModel != null)
 					{
-						int ModelCache = Blogs.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Blogs.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
+						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (Blogs.Model.BlogPhoto)objModel;
+			return (Blogs.Model.BlogArticle)objModel;
 		}
 
 		/// <summary>
@@ -122,7 +106,7 @@ namespace Blogs.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<Blogs.Model.BlogPhoto> GetModelList(string strWhere)
+		public List<Blogs.Model.BlogArticle> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -130,13 +114,13 @@ namespace Blogs.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<Blogs.Model.BlogPhoto> DataTableToList(DataTable dt)
+		public List<Blogs.Model.BlogArticle> DataTableToList(DataTable dt)
 		{
-			List<Blogs.Model.BlogPhoto> modelList = new List<Blogs.Model.BlogPhoto>();
+			List<Blogs.Model.BlogArticle> modelList = new List<Blogs.Model.BlogArticle>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				Blogs.Model.BlogPhoto model;
+				Blogs.Model.BlogArticle model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

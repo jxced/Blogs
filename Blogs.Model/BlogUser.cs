@@ -1,20 +1,4 @@
-﻿/**  版本信息模板在安装目录下，可自行修改。
-* BlogUser.cs
-*
-* 功 能： N/A
-* 类 名： BlogUser
-*
-* Ver    变更日期             负责人  变更内容
-* ───────────────────────────────────
-* V0.01  2017/2/22 0:18:46   N/A    初版
-*
-* Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
-*┌──────────────────────────────────┐
-*│　此技术信息为本公司机密信息，未经本公司书面同意禁止向第三方披露．　│
-*│　版权所有：动软卓越（北京）科技有限公司　　　　　　　　　　　　　　│
-*└──────────────────────────────────┘
-*/
-using System;
+﻿using System;
 namespace Blogs.Model
 {
 	/// <summary>
@@ -31,10 +15,10 @@ namespace Blogs.Model
 		private string _oginpwd;
 		private string _cnname;
 		private string _email;
-		private int _islock=0;
+		private bool _islock= false;
 		private bool _isdel= false;
-		private DateTime _addtime;
-		private DateTime _lastlogintime;
+		private DateTime? _addtime= Convert.ToDateTime(datetime("now"));
+		private DateTime? _lastlogintime= Convert.ToDateTime(datetime("now"));
 		private string _lastloginip;
 		/// <summary>
 		/// 
@@ -79,7 +63,7 @@ namespace Blogs.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int islock
+		public bool islock
 		{
 			set{ _islock=value;}
 			get{return _islock;}
@@ -95,7 +79,7 @@ namespace Blogs.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime addtime
+		public DateTime? addtime
 		{
 			set{ _addtime=value;}
 			get{return _addtime;}
@@ -103,7 +87,7 @@ namespace Blogs.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime lastlogintime
+		public DateTime? lastlogintime
 		{
 			set{ _lastlogintime=value;}
 			get{return _lastlogintime;}

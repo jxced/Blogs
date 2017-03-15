@@ -2,15 +2,15 @@
 using System.Data;
 using System.Text;
 using System.Data.SQLite;
-using Blogs.DBUtility;//Please add references
+using Maticsoft.DBUtility;//Please add references
 namespace Blogs.DAL
 {
 	/// <summary>
-	/// 数据访问类:BlogArticle
+	/// 数据访问类:BlogArticleDAL
 	/// </summary>
-	public partial class BlogArticle
+	public partial class BlogArticleDAL
 	{
-		public BlogArticle()
+		public BlogArticleDAL()
 		{}
 		#region  BasicMethod
 
@@ -57,14 +57,14 @@ namespace Blogs.DAL
 					new SQLiteParameter("@acontent", DbType.String),
 					new SQLiteParameter("@aimgsrc", DbType.String),
 					new SQLiteParameter("@aplnum", DbType.Int32,4),
-					new SQLiteParameter("@aallowpl", DbType.Boolean,1),
-					new SQLiteParameter("@aistop", DbType.Boolean,1),
+					new SQLiteParameter("@aallowpl", DbType.Boolean),
+					new SQLiteParameter("@aistop", DbType.Boolean),
 					new SQLiteParameter("@atag", DbType.String),
 					new SQLiteParameter("@acick", DbType.Int32,4),
 					new SQLiteParameter("@astatu", DbType.Int32,4),
 					new SQLiteParameter("@aaddtime", DbType.DateTime),
 					new SQLiteParameter("@aupdatetime", DbType.DateTime),
-					new SQLiteParameter("@aisdel", DbType.Boolean,1),
+					new SQLiteParameter("@aisdel", DbType.Boolean),
 					new SQLiteParameter("@ahtmlsrc", DbType.String)};
 			parameters[0].Value = model.acate;
 			parameters[1].Value = model.aauthor;
@@ -122,14 +122,14 @@ namespace Blogs.DAL
 					new SQLiteParameter("@acontent", DbType.String),
 					new SQLiteParameter("@aimgsrc", DbType.String),
 					new SQLiteParameter("@aplnum", DbType.Int32,4),
-					new SQLiteParameter("@aallowpl", DbType.Boolean,1),
-					new SQLiteParameter("@aistop", DbType.Boolean,1),
+					new SQLiteParameter("@aallowpl", DbType.Boolean),
+					new SQLiteParameter("@aistop", DbType.Boolean),
 					new SQLiteParameter("@atag", DbType.String),
 					new SQLiteParameter("@acick", DbType.Int32,4),
 					new SQLiteParameter("@astatu", DbType.Int32,4),
 					new SQLiteParameter("@aaddtime", DbType.DateTime),
 					new SQLiteParameter("@aupdatetime", DbType.DateTime),
-					new SQLiteParameter("@aisdel", DbType.Boolean,1),
+					new SQLiteParameter("@aisdel", DbType.Boolean),
 					new SQLiteParameter("@ahtmlsrc", DbType.String),
 					new SQLiteParameter("@aid", DbType.Int32,8)};
 			parameters[0].Value = model.acate;
@@ -354,7 +354,7 @@ namespace Blogs.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			object obj = DbHelperSQLite.GetSingle(strSql.ToString());
+			object obj = DbHelperSQL.GetSingle(strSql.ToString());
 			if (obj == null)
 			{
 				return 0;

@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2C96A9EC-6B1C-41A9-86E8-F30FEA72D629}</ProjectGuid>
+    <ProjectGuid>{9ED317CB-A744-4777-AADE-BA5A3A3F821D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Blogs.BLL</RootNamespace>
     <AssemblyName>Blogs.BLL</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -40,36 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlogArticle.cs" />
-    <Compile Include="BlogArticleCategory.cs" />
-    <Compile Include="BlogCommentArticle.cs" />
-    <Compile Include="BlogCommentPhoto.cs" />
-    <Compile Include="BlogPhoto.cs" />
-    <Compile Include="BlogPhotoAlblum.cs" />
-    <Compile Include="BlogUser.cs" />
-    <Compile Include="Enumeration.cs" />
+    <Compile Include="BlogArticleBLL.cs" />
+    <Compile Include="BlogArticleCategoryBLL.cs" />
+    <Compile Include="BlogCommentArticleBLL.cs" />
+    <Compile Include="BlogCommentPhotoBLL.cs" />
+    <Compile Include="BlogPhotoAlblumBLL.cs" />
+    <Compile Include="BlogPhotoBLL.cs" />
+    <Compile Include="BlogUserBLL.cs" />
+    <Compile Include="EnumerationBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Blogs.Common\Blogs.Common.csproj">
-      <Project>{63612450-ef69-407a-a0fd-1293e76269aa}</Project>
-      <Name>Blogs.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Blogs.DAL\Blogs.DAL.csproj">
-      <Project>{18ec6e54-55ea-4273-87a8-b411f3a17f41}</Project>
-      <Name>Blogs.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Blogs.Model\Blogs.Model.csproj">
-      <Project>{7265d2bb-4830-4c08-ba73-6a5f0903df44}</Project>
-      <Name>Blogs.Model</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

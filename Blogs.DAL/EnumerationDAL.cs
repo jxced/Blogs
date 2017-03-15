@@ -2,15 +2,15 @@
 using System.Data;
 using System.Text;
 using System.Data.SQLite;
-using Blogs.DBUtility;//Please add references
+using Maticsoft.DBUtility;//Please add references
 namespace Blogs.DAL
 {
 	/// <summary>
-	/// 数据访问类:BlogArticleCategory
+	/// 数据访问类:EnumerationDAL
 	/// </summary>
-	public partial class BlogArticleCategory
+	public partial class EnumerationDAL
 	{
-		public BlogArticleCategory()
+		public EnumerationDAL()
 		{}
 		#region  BasicMethod
 
@@ -19,21 +19,21 @@ namespace Blogs.DAL
 		/// </summary>
 		public int GetMaxId()
 		{
-		return DbHelperSQLite.GetMaxID("id", "BlogArticleCategory"); 
+		return DbHelperSQLite.GetMaxID("e_id", "Enumeration"); 
 		}
 
 		/// <summary>
 		/// 是否存在该记录
 		/// </summary>
-		public bool Exists(int id)
+		public bool Exists(int e_id)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select count(1) from BlogArticleCategory");
-			strSql.Append(" where id=@id");
+			strSql.Append("select count(1) from Enumeration");
+			strSql.Append(" where e_id=@e_id");
 			SQLiteParameter[] parameters = {
-					new SQLiteParameter("@id", DbType.Int32,4)
+					new SQLiteParameter("@e_id", DbType.Int32,4)
 			};
-			parameters[0].Value = id;
+			parameters[0].Value = e_id;
 
 			return DbHelperSQLite.Exists(strSql.ToString(),parameters);
 		}
@@ -42,27 +42,27 @@ namespace Blogs.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public int Add(Blogs.Model.BlogArticleCategory model)
+		public int Add(Blogs.Model.Enumeration model)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("insert into BlogArticleCategory(");
-			strSql.Append("author,categoryName,remark,status,isdel,addtime)");
+			strSql.Append("insert into Enumeration(");
+			strSql.Append("e_ename,e_cname,e_type,e_remark,e_addtime,e_isdel)");
 			strSql.Append(" values (");
-			strSql.Append("@author,@categoryName,@remark,@status,@isdel,@addtime)");
+			strSql.Append("@e_ename,@e_cname,@e_type,@e_remark,@e_addtime,@e_isdel)");
 			strSql.Append(";select LAST_INSERT_ROWID()");
 			SQLiteParameter[] parameters = {
-					new SQLiteParameter("@author", DbType.Int32,4),
-					new SQLiteParameter("@categoryName", DbType.String),
-					new SQLiteParameter("@remark", DbType.String),
-					new SQLiteParameter("@status", DbType.Int32,4),
-					new SQLiteParameter("@isdel", DbType.Boolean,1),
-					new SQLiteParameter("@addtime", DbType.DateTime)};
-			parameters[0].Value = model.author;
-			parameters[1].Value = model.CategoryName;
-			parameters[2].Value = model.remark;
-			parameters[3].Value = model.status;
-			parameters[4].Value = model.isdel;
-			parameters[5].Value = model.addtime;
+					new SQLiteParameter("@e_ename", DbType.String),
+					new SQLiteParameter("@e_cname", DbType.String),
+					new SQLiteParameter("@e_type", DbType.String),
+					new SQLiteParameter("@e_remark", DbType.String),
+					new SQLiteParameter("@e_addtime", DbType.DateTime),
+					new SQLiteParameter("@e_isdel", DbType.Boolean)};
+			parameters[0].Value = model.e_ename;
+			parameters[1].Value = model.e_cname;
+			parameters[2].Value = model.e_type;
+			parameters[3].Value = model.e_remark;
+			parameters[4].Value = model.e_addtime;
+			parameters[5].Value = model.e_isdel;
 
 			object obj = DbHelperSQLite.GetSingle(strSql.ToString(),parameters);
 			if (obj == null)
@@ -77,32 +77,32 @@ namespace Blogs.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(Blogs.Model.BlogArticleCategory model)
+		public bool Update(Blogs.Model.Enumeration model)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("update BlogArticleCategory set ");
-			strSql.Append("author=@author,");
-			strSql.Append("categoryName=@categoryName,");
-			strSql.Append("remark=@remark,");
-			strSql.Append("status=@status,");
-			strSql.Append("isdel=@isdel,");
-			strSql.Append("addtime=@addtime");
-			strSql.Append(" where id=@id");
+			strSql.Append("update Enumeration set ");
+			strSql.Append("e_ename=@e_ename,");
+			strSql.Append("e_cname=@e_cname,");
+			strSql.Append("e_type=@e_type,");
+			strSql.Append("e_remark=@e_remark,");
+			strSql.Append("e_addtime=@e_addtime,");
+			strSql.Append("e_isdel=@e_isdel");
+			strSql.Append(" where e_id=@e_id");
 			SQLiteParameter[] parameters = {
-					new SQLiteParameter("@author", DbType.Int32,4),
-					new SQLiteParameter("@categoryName", DbType.String),
-					new SQLiteParameter("@remark", DbType.String),
-					new SQLiteParameter("@status", DbType.Int32,4),
-					new SQLiteParameter("@isdel", DbType.Boolean,1),
-					new SQLiteParameter("@addtime", DbType.DateTime),
-					new SQLiteParameter("@id", DbType.Int32,8)};
-			parameters[0].Value = model.author;
-			parameters[1].Value = model.CategoryName;
-			parameters[2].Value = model.remark;
-			parameters[3].Value = model.status;
-			parameters[4].Value = model.isdel;
-			parameters[5].Value = model.addtime;
-			parameters[6].Value = model.id;
+					new SQLiteParameter("@e_ename", DbType.String),
+					new SQLiteParameter("@e_cname", DbType.String),
+					new SQLiteParameter("@e_type", DbType.String),
+					new SQLiteParameter("@e_remark", DbType.String),
+					new SQLiteParameter("@e_addtime", DbType.DateTime),
+					new SQLiteParameter("@e_isdel", DbType.Boolean),
+					new SQLiteParameter("@e_id", DbType.Int32,8)};
+			parameters[0].Value = model.e_ename;
+			parameters[1].Value = model.e_cname;
+			parameters[2].Value = model.e_type;
+			parameters[3].Value = model.e_remark;
+			parameters[4].Value = model.e_addtime;
+			parameters[5].Value = model.e_isdel;
+			parameters[6].Value = model.e_id;
 
 			int rows=DbHelperSQLite.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -118,16 +118,16 @@ namespace Blogs.DAL
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		public bool Delete(int id)
+		public bool Delete(int e_id)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("delete from BlogArticleCategory ");
-			strSql.Append(" where id=@id");
+			strSql.Append("delete from Enumeration ");
+			strSql.Append(" where e_id=@e_id");
 			SQLiteParameter[] parameters = {
-					new SQLiteParameter("@id", DbType.Int32,4)
+					new SQLiteParameter("@e_id", DbType.Int32,4)
 			};
-			parameters[0].Value = id;
+			parameters[0].Value = e_id;
 
 			int rows=DbHelperSQLite.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -142,11 +142,11 @@ namespace Blogs.DAL
 		/// <summary>
 		/// 批量删除数据
 		/// </summary>
-		public bool DeleteList(string idlist )
+		public bool DeleteList(string e_idlist )
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("delete from BlogArticleCategory ");
-			strSql.Append(" where id in ("+idlist + ")  ");
+			strSql.Append("delete from Enumeration ");
+			strSql.Append(" where e_id in ("+e_idlist + ")  ");
 			int rows=DbHelperSQLite.ExecuteSql(strSql.ToString());
 			if (rows > 0)
 			{
@@ -162,18 +162,18 @@ namespace Blogs.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public Blogs.Model.BlogArticleCategory GetModel(int id)
+		public Blogs.Model.Enumeration GetModel(int e_id)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select id,author,categoryName,remark,status,isdel,addtime from BlogArticleCategory ");
-			strSql.Append(" where id=@id");
+			strSql.Append("select e_id,e_ename,e_cname,e_type,e_remark,e_addtime,e_isdel from Enumeration ");
+			strSql.Append(" where e_id=@e_id");
 			SQLiteParameter[] parameters = {
-					new SQLiteParameter("@id", DbType.Int32,4)
+					new SQLiteParameter("@e_id", DbType.Int32,4)
 			};
-			parameters[0].Value = id;
+			parameters[0].Value = e_id;
 
-			Blogs.Model.BlogArticleCategory model=new Blogs.Model.BlogArticleCategory();
+			Blogs.Model.Enumeration model=new Blogs.Model.Enumeration();
 			DataSet ds=DbHelperSQLite.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -189,45 +189,45 @@ namespace Blogs.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public Blogs.Model.BlogArticleCategory DataRowToModel(DataRow row)
+		public Blogs.Model.Enumeration DataRowToModel(DataRow row)
 		{
-			Blogs.Model.BlogArticleCategory model=new Blogs.Model.BlogArticleCategory();
+			Blogs.Model.Enumeration model=new Blogs.Model.Enumeration();
 			if (row != null)
 			{
-				if(row["id"]!=null && row["id"].ToString()!="")
+				if(row["e_id"]!=null && row["e_id"].ToString()!="")
 				{
-					model.id=int.Parse(row["id"].ToString());
+					model.e_id=int.Parse(row["e_id"].ToString());
 				}
-				if(row["author"]!=null && row["author"].ToString()!="")
+				if(row["e_ename"]!=null)
 				{
-					model.author=int.Parse(row["author"].ToString());
+					model.e_ename=row["e_ename"].ToString();
 				}
-				if(row["categoryName"]!=null)
+				if(row["e_cname"]!=null)
 				{
-					model.CategoryName = row["categoryName"].ToString();
+					model.e_cname=row["e_cname"].ToString();
 				}
-				if(row["remark"]!=null)
+				if(row["e_type"]!=null)
 				{
-					model.remark=row["remark"].ToString();
+					model.e_type=row["e_type"].ToString();
 				}
-				if(row["status"]!=null && row["status"].ToString()!="")
+				if(row["e_remark"]!=null)
 				{
-					model.status=int.Parse(row["status"].ToString());
+					model.e_remark=row["e_remark"].ToString();
 				}
-				if(row["isdel"]!=null && row["isdel"].ToString()!="")
+				if(row["e_addtime"]!=null && row["e_addtime"].ToString()!="")
 				{
-					if((row["isdel"].ToString()=="1")||(row["isdel"].ToString().ToLower()=="true"))
+					model.e_addtime=DateTime.Parse(row["e_addtime"].ToString());
+				}
+				if(row["e_isdel"]!=null && row["e_isdel"].ToString()!="")
+				{
+					if((row["e_isdel"].ToString()=="1")||(row["e_isdel"].ToString().ToLower()=="true"))
 					{
-						model.isdel=true;
+						model.e_isdel=true;
 					}
 					else
 					{
-						model.isdel=false;
+						model.e_isdel=false;
 					}
-				}
-				if(row["addtime"]!=null && row["addtime"].ToString()!="")
-				{
-					model.addtime=DateTime.Parse(row["addtime"].ToString());
 				}
 			}
 			return model;
@@ -239,8 +239,8 @@ namespace Blogs.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select id,author,categoryName,remark,status,isdel,addtime ");
-			strSql.Append(" FROM BlogArticleCategory ");
+			strSql.Append("select e_id,e_ename,e_cname,e_type,e_remark,e_addtime,e_isdel ");
+			strSql.Append(" FROM Enumeration ");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);
@@ -254,12 +254,12 @@ namespace Blogs.DAL
 		public int GetRecordCount(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select count(1) FROM BlogArticleCategory ");
+			strSql.Append("select count(1) FROM Enumeration ");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			object obj = DbHelperSQLite.GetSingle(strSql.ToString());
+			object obj = DbHelperSQL.GetSingle(strSql.ToString());
 			if (obj == null)
 			{
 				return 0;
@@ -283,9 +283,9 @@ namespace Blogs.DAL
 			}
 			else
 			{
-				strSql.Append("order by T.id desc");
+				strSql.Append("order by T.e_id desc");
 			}
-			strSql.Append(")AS Row, T.*  from BlogArticleCategory T ");
+			strSql.Append(")AS Row, T.*  from Enumeration T ");
 			if (!string.IsNullOrEmpty(strWhere.Trim()))
 			{
 				strSql.Append(" WHERE " + strWhere);
@@ -310,8 +310,8 @@ namespace Blogs.DAL
 					new SQLiteParameter("@OrderType", DbType.bit),
 					new SQLiteParameter("@strWhere", DbType.VarChar,1000),
 					};
-			parameters[0].Value = "BlogArticleCategory";
-			parameters[1].Value = "id";
+			parameters[0].Value = "Enumeration";
+			parameters[1].Value = "e_id";
 			parameters[2].Value = PageSize;
 			parameters[3].Value = PageIndex;
 			parameters[4].Value = 0;

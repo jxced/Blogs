@@ -2,15 +2,15 @@
 using System.Data;
 using System.Text;
 using System.Data.SQLite;
-using Blogs.DBUtility;//Please add references
+using Maticsoft.DBUtility;//Please add references
 namespace Blogs.DAL
 {
 	/// <summary>
-	/// 数据访问类:BlogPhotoAlblum
+	/// 数据访问类:BlogPhotoAlblumDAL
 	/// </summary>
-	public partial class BlogPhotoAlblum
+	public partial class BlogPhotoAlblumDAL
 	{
-		public BlogPhotoAlblum()
+		public BlogPhotoAlblumDAL()
 		{}
 		#region  BasicMethod
 
@@ -29,9 +29,10 @@ namespace Blogs.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select count(1) from BlogPhotoAlblum");
-			strSql.Append(" where paid=@paid ");
+			strSql.Append(" where paid=@paid");
 			SQLiteParameter[] parameters = {
-					new SQLiteParameter("@paid", DbType.Int32,8)			};
+					new SQLiteParameter("@paid", DbType.Int32,4)
+			};
 			parameters[0].Value = paid;
 
 			return DbHelperSQLite.Exists(strSql.ToString(),parameters);
@@ -41,15 +42,15 @@ namespace Blogs.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(Blogs.Model.BlogPhotoAlblum model)
+		public int Add(Blogs.Model.BlogPhotoAlblum model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into BlogPhotoAlblum(");
-			strSql.Append("paid,paauthor,patitle,paremark,pacoversrc,paphotonum,pastatu,paaddtime,paisdel)");
+			strSql.Append("paauthor,patitle,paremark,pacoversrc,paphotonum,pastatu,paaddtime,paisdel)");
 			strSql.Append(" values (");
-			strSql.Append("@paid,@paauthor,@patitle,@paremark,@pacoversrc,@paphotonum,@pastatu,@paaddtime,@paisdel)");
+			strSql.Append("@paauthor,@patitle,@paremark,@pacoversrc,@paphotonum,@pastatu,@paaddtime,@paisdel)");
+			strSql.Append(";select LAST_INSERT_ROWID()");
 			SQLiteParameter[] parameters = {
-					new SQLiteParameter("@paid", DbType.Int32,8),
 					new SQLiteParameter("@paauthor", DbType.Int32,8),
 					new SQLiteParameter("@patitle", DbType.String),
 					new SQLiteParameter("@paremark", DbType.String),
@@ -57,25 +58,24 @@ namespace Blogs.DAL
 					new SQLiteParameter("@paphotonum", DbType.Int32,8),
 					new SQLiteParameter("@pastatu", DbType.Int32,8),
 					new SQLiteParameter("@paaddtime", DbType.DateTime),
-					new SQLiteParameter("@paisdel", DbType.bit,1)};
-			parameters[0].Value = model.paid;
-			parameters[1].Value = model.paauthor;
-			parameters[2].Value = model.patitle;
-			parameters[3].Value = model.paremark;
-			parameters[4].Value = model.pacoversrc;
-			parameters[5].Value = model.paphotonum;
-			parameters[6].Value = model.pastatu;
-			parameters[7].Value = model.paaddtime;
-			parameters[8].Value = model.paisdel;
+					new SQLiteParameter("@paisdel", DbType.Boolean)};
+			parameters[0].Value = model.paauthor;
+			parameters[1].Value = model.patitle;
+			parameters[2].Value = model.paremark;
+			parameters[3].Value = model.pacoversrc;
+			parameters[4].Value = model.paphotonum;
+			parameters[5].Value = model.pastatu;
+			parameters[6].Value = model.paaddtime;
+			parameters[7].Value = model.paisdel;
 
-			int rows=DbHelperSQLite.ExecuteSql(strSql.ToString(),parameters);
-			if (rows > 0)
+			object obj = DbHelperSQLite.GetSingle(strSql.ToString(),parameters);
+			if (obj == null)
 			{
-				return true;
+				return 0;
 			}
 			else
 			{
-				return false;
+				return Convert.ToInt32(obj);
 			}
 		}
 		/// <summary>
@@ -93,7 +93,7 @@ namespace Blogs.DAL
 			strSql.Append("pastatu=@pastatu,");
 			strSql.Append("paaddtime=@paaddtime,");
 			strSql.Append("paisdel=@paisdel");
-			strSql.Append(" where paid=@paid ");
+			strSql.Append(" where paid=@paid");
 			SQLiteParameter[] parameters = {
 					new SQLiteParameter("@paauthor", DbType.Int32,8),
 					new SQLiteParameter("@patitle", DbType.String),
@@ -102,7 +102,7 @@ namespace Blogs.DAL
 					new SQLiteParameter("@paphotonum", DbType.Int32,8),
 					new SQLiteParameter("@pastatu", DbType.Int32,8),
 					new SQLiteParameter("@paaddtime", DbType.DateTime),
-					new SQLiteParameter("@paisdel", DbType.bit,1),
+					new SQLiteParameter("@paisdel", DbType.Boolean),
 					new SQLiteParameter("@paid", DbType.Int32,8)};
 			parameters[0].Value = model.paauthor;
 			parameters[1].Value = model.patitle;
@@ -133,9 +133,10 @@ namespace Blogs.DAL
 			
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("delete from BlogPhotoAlblum ");
-			strSql.Append(" where paid=@paid ");
+			strSql.Append(" where paid=@paid");
 			SQLiteParameter[] parameters = {
-					new SQLiteParameter("@paid", DbType.Int32,8)			};
+					new SQLiteParameter("@paid", DbType.Int32,4)
+			};
 			parameters[0].Value = paid;
 
 			int rows=DbHelperSQLite.ExecuteSql(strSql.ToString(),parameters);
@@ -176,9 +177,10 @@ namespace Blogs.DAL
 			
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select paid,paauthor,patitle,paremark,pacoversrc,paphotonum,pastatu,paaddtime,paisdel from BlogPhotoAlblum ");
-			strSql.Append(" where paid=@paid ");
+			strSql.Append(" where paid=@paid");
 			SQLiteParameter[] parameters = {
-					new SQLiteParameter("@paid", DbType.Int32,8)			};
+					new SQLiteParameter("@paid", DbType.Int32,4)
+			};
 			parameters[0].Value = paid;
 
 			Blogs.Model.BlogPhotoAlblum model=new Blogs.Model.BlogPhotoAlblum();

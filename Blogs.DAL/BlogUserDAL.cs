@@ -2,15 +2,15 @@
 using System.Data;
 using System.Text;
 using System.Data.SQLite;
-using Blogs.DBUtility;//Please add references
+using Maticsoft.DBUtility;//Please add references
 namespace Blogs.DAL
 {
 	/// <summary>
-	/// 数据访问类:BlogUser
+	/// 数据访问类:BlogUserDAL
 	/// </summary>
-	public partial class BlogUser
+	public partial class BlogUserDAL
 	{
-		public BlogUser()
+		public BlogUserDAL()
 		{}
 		#region  BasicMethod
 
@@ -55,8 +55,8 @@ namespace Blogs.DAL
 					new SQLiteParameter("@oginpwd", DbType.String),
 					new SQLiteParameter("@cnname", DbType.String),
 					new SQLiteParameter("@email", DbType.String),
-					new SQLiteParameter("@islock", DbType.bit,1),
-					new SQLiteParameter("@isdel", DbType.bit,1),
+					new SQLiteParameter("@islock", DbType.Boolean),
+					new SQLiteParameter("@isdel", DbType.Boolean),
 					new SQLiteParameter("@addtime", DbType.DateTime),
 					new SQLiteParameter("@lastlogintime", DbType.DateTime),
 					new SQLiteParameter("@lastloginip", DbType.String)};
@@ -102,8 +102,8 @@ namespace Blogs.DAL
 					new SQLiteParameter("@oginpwd", DbType.String),
 					new SQLiteParameter("@cnname", DbType.String),
 					new SQLiteParameter("@email", DbType.String),
-					new SQLiteParameter("@islock", DbType.bit,1),
-					new SQLiteParameter("@isdel", DbType.bit,1),
+					new SQLiteParameter("@islock", DbType.Boolean),
+					new SQLiteParameter("@isdel", DbType.Boolean),
 					new SQLiteParameter("@addtime", DbType.DateTime),
 					new SQLiteParameter("@lastlogintime", DbType.DateTime),
 					new SQLiteParameter("@lastloginip", DbType.String),

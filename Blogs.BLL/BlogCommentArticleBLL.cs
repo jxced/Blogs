@@ -1,33 +1,17 @@
-﻿/**  版本信息模板在安装目录下，可自行修改。
-* BlogPhotoAlblum.cs
-*
-* 功 能： N/A
-* 类 名： BlogPhotoAlblum
-*
-* Ver    变更日期             负责人  变更内容
-* ───────────────────────────────────
-* V0.01  2017/3/2 22:21:06   N/A    初版
-*
-* Copyright (c) 2012 Blogs Corporation. All rights reserved.
-*┌──────────────────────────────────┐
-*│　此技术信息为本公司机密信息，未经本公司书面同意禁止向第三方披露．　│
-*│　版权所有：动软卓越（北京）科技有限公司　　　　　　　　　　　　　　│
-*└──────────────────────────────────┘
-*/
-using System;
+﻿using System;
 using System.Data;
 using System.Collections.Generic;
-using Blogs.Common;
+using Maticsoft.Common;
 using Blogs.Model;
 namespace Blogs.BLL
 {
 	/// <summary>
-	/// BlogPhotoAlblum
+	/// BlogCommentArticleBLL
 	/// </summary>
-	public partial class BlogPhotoAlblum
+	public partial class BlogCommentArticleBLL
 	{
-		private readonly Blogs.DAL.BlogPhotoAlblum dal=new Blogs.DAL.BlogPhotoAlblum();
-		public BlogPhotoAlblum()
+		private readonly Blogs.DAL.BlogCommentArticleDAL dal=new Blogs.DAL.BlogCommentArticleDAL();
+		public BlogCommentArticleBLL()
 		{}
 		#region  BasicMethod
 
@@ -42,15 +26,15 @@ namespace Blogs.BLL
 		/// <summary>
 		/// 是否存在该记录
 		/// </summary>
-		public bool Exists(int paid)
+		public bool Exists(int cmaid)
 		{
-			return dal.Exists(paid);
+			return dal.Exists(cmaid);
 		}
 
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(Blogs.Model.BlogPhotoAlblum model)
+		public int  Add(Blogs.Model.BlogCommentArticle model)
 		{
 			return dal.Add(model);
 		}
@@ -58,7 +42,7 @@ namespace Blogs.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(Blogs.Model.BlogPhotoAlblum model)
+		public bool Update(Blogs.Model.BlogCommentArticle model)
 		{
 			return dal.Update(model);
 		}
@@ -66,50 +50,50 @@ namespace Blogs.BLL
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		public bool Delete(int paid)
+		public bool Delete(int cmaid)
 		{
 			
-			return dal.Delete(paid);
+			return dal.Delete(cmaid);
 		}
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		public bool DeleteList(string paidlist )
+		public bool DeleteList(string cmaidlist )
 		{
-			return dal.DeleteList(Blogs.Common.PageValidate.SafeLongFilter(paidlist,0) );
+			return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(cmaidlist,0) );
 		}
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public Blogs.Model.BlogPhotoAlblum GetModel(int paid)
+		public Blogs.Model.BlogCommentArticle GetModel(int cmaid)
 		{
 			
-			return dal.GetModel(paid);
+			return dal.GetModel(cmaid);
 		}
 
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public Blogs.Model.BlogPhotoAlblum GetModelByCache(int paid)
+		public Blogs.Model.BlogCommentArticle GetModelByCache(int cmaid)
 		{
 			
-			string CacheKey = "BlogPhotoAlblumModel-" + paid;
-			object objModel = Blogs.Common.DataCache.GetCache(CacheKey);
+			string CacheKey = "BlogCommentArticleModel-" + cmaid;
+			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
 				{
-					objModel = dal.GetModel(paid);
+					objModel = dal.GetModel(cmaid);
 					if (objModel != null)
 					{
-						int ModelCache = Blogs.Common.ConfigHelper.GetConfigInt("ModelCache");
-						Blogs.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
+						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
 					}
 				}
 				catch{}
 			}
-			return (Blogs.Model.BlogPhotoAlblum)objModel;
+			return (Blogs.Model.BlogCommentArticle)objModel;
 		}
 
 		/// <summary>
@@ -122,7 +106,7 @@ namespace Blogs.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<Blogs.Model.BlogPhotoAlblum> GetModelList(string strWhere)
+		public List<Blogs.Model.BlogCommentArticle> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -130,13 +114,13 @@ namespace Blogs.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<Blogs.Model.BlogPhotoAlblum> DataTableToList(DataTable dt)
+		public List<Blogs.Model.BlogCommentArticle> DataTableToList(DataTable dt)
 		{
-			List<Blogs.Model.BlogPhotoAlblum> modelList = new List<Blogs.Model.BlogPhotoAlblum>();
+			List<Blogs.Model.BlogCommentArticle> modelList = new List<Blogs.Model.BlogCommentArticle>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				Blogs.Model.BlogPhotoAlblum model;
+				Blogs.Model.BlogCommentArticle model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

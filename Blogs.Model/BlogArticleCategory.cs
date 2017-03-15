@@ -1,24 +1,8 @@
-﻿/**  版本信息模板在安装目录下，可自行修改。
-* BlogArticleCate.cs
-*
-* 功 能： N/A
-* 类 名： BlogArticleCate
-*
-* Ver    变更日期             负责人  变更内容
-* ───────────────────────────────────
-* V0.01  2017/2/22 0:18:44   N/A    初版
-*
-* Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
-*┌──────────────────────────────────┐
-*│　此技术信息为本公司机密信息，未经本公司书面同意禁止向第三方披露．　│
-*│　版权所有：动软卓越（北京）科技有限公司　　　　　　　　　　　　　　│
-*└──────────────────────────────────┘
-*/
-using System;
+﻿using System;
 namespace Blogs.Model
 {
 	/// <summary>
-	/// BlogArticleCate:实体类(属性说明自动提取数据库字段的描述信息)
+	/// BlogArticleCategory:实体类(属性说明自动提取数据库字段的描述信息)
 	/// </summary>
 	[Serializable]
 	public partial class BlogArticleCategory
@@ -28,11 +12,11 @@ namespace Blogs.Model
 		#region Model
 		private int _id;
 		private int _author;
-		private string _categoryName;
+		private string _categoryname;
 		private string _remark;
 		private int _status=1;
 		private bool _isdel= false;
-		private DateTime _addtime;
+		private DateTime _addtime= Convert.ToDateTime(datetime("now"));
 		/// <summary>
 		/// 
 		/// </summary>
@@ -52,10 +36,10 @@ namespace Blogs.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public string CategoryName
-        {
-			set{ _categoryName = value;}
-			get{return _categoryName; }
+		public string categoryName
+		{
+			set{ _categoryname=value;}
+			get{return _categoryname;}
 		}
 		/// <summary>
 		/// 

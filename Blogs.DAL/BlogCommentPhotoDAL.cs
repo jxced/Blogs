@@ -2,15 +2,15 @@
 using System.Data;
 using System.Text;
 using System.Data.SQLite;
-using Blogs.DBUtility;//Please add references
+using Maticsoft.DBUtility;//Please add references
 namespace Blogs.DAL
 {
 	/// <summary>
-	/// 数据访问类:BlogCommentPhoto
+	/// 数据访问类:BlogCommentPhotoDAL
 	/// </summary>
-	public partial class BlogCommentPhoto
+	public partial class BlogCommentPhotoDAL
 	{
-		public BlogCommentPhoto()
+		public BlogCommentPhotoDAL()
 		{}
 		#region  BasicMethod
 
@@ -29,9 +29,10 @@ namespace Blogs.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select count(1) from BlogCommentPhoto");
-			strSql.Append(" where cmpid=@cmpid ");
+			strSql.Append(" where cmpid=@cmpid");
 			SQLiteParameter[] parameters = {
-					new SQLiteParameter("@cmpid", DbType.Int32,8)			};
+					new SQLiteParameter("@cmpid", DbType.Int32,4)
+			};
 			parameters[0].Value = cmpid;
 
 			return DbHelperSQLite.Exists(strSql.ToString(),parameters);
@@ -41,37 +42,36 @@ namespace Blogs.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(Blogs.Model.BlogCommentPhoto model)
+		public int Add(Blogs.Model.BlogCommentPhoto model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into BlogCommentPhoto(");
-			strSql.Append("cmpid,cmpauthor,cmpphoto,cmptitle,cmpcontent,cmpaddtime,cmpisdel)");
+			strSql.Append("cmpauthor,cmpphoto,cmptitle,cmpcontent,cmpaddtime,cmpisdel)");
 			strSql.Append(" values (");
-			strSql.Append("@cmpid,@cmpauthor,@cmpphoto,@cmptitle,@cmpcontent,@cmpaddtime,@cmpisdel)");
+			strSql.Append("@cmpauthor,@cmpphoto,@cmptitle,@cmpcontent,@cmpaddtime,@cmpisdel)");
+			strSql.Append(";select LAST_INSERT_ROWID()");
 			SQLiteParameter[] parameters = {
-					new SQLiteParameter("@cmpid", DbType.Int32,8),
 					new SQLiteParameter("@cmpauthor", DbType.Int32,8),
 					new SQLiteParameter("@cmpphoto", DbType.Int32,8),
 					new SQLiteParameter("@cmptitle", DbType.String),
 					new SQLiteParameter("@cmpcontent", DbType.String),
 					new SQLiteParameter("@cmpaddtime", DbType.DateTime),
-					new SQLiteParameter("@cmpisdel", DbType.bit,1)};
-			parameters[0].Value = model.cmpid;
-			parameters[1].Value = model.cmpauthor;
-			parameters[2].Value = model.cmpphoto;
-			parameters[3].Value = model.cmptitle;
-			parameters[4].Value = model.cmpcontent;
-			parameters[5].Value = model.cmpaddtime;
-			parameters[6].Value = model.cmpisdel;
+					new SQLiteParameter("@cmpisdel", DbType.Boolean)};
+			parameters[0].Value = model.cmpauthor;
+			parameters[1].Value = model.cmpphoto;
+			parameters[2].Value = model.cmptitle;
+			parameters[3].Value = model.cmpcontent;
+			parameters[4].Value = model.cmpaddtime;
+			parameters[5].Value = model.cmpisdel;
 
-			int rows=DbHelperSQLite.ExecuteSql(strSql.ToString(),parameters);
-			if (rows > 0)
+			object obj = DbHelperSQLite.GetSingle(strSql.ToString(),parameters);
+			if (obj == null)
 			{
-				return true;
+				return 0;
 			}
 			else
 			{
-				return false;
+				return Convert.ToInt32(obj);
 			}
 		}
 		/// <summary>
@@ -87,14 +87,14 @@ namespace Blogs.DAL
 			strSql.Append("cmpcontent=@cmpcontent,");
 			strSql.Append("cmpaddtime=@cmpaddtime,");
 			strSql.Append("cmpisdel=@cmpisdel");
-			strSql.Append(" where cmpid=@cmpid ");
+			strSql.Append(" where cmpid=@cmpid");
 			SQLiteParameter[] parameters = {
 					new SQLiteParameter("@cmpauthor", DbType.Int32,8),
 					new SQLiteParameter("@cmpphoto", DbType.Int32,8),
 					new SQLiteParameter("@cmptitle", DbType.String),
 					new SQLiteParameter("@cmpcontent", DbType.String),
 					new SQLiteParameter("@cmpaddtime", DbType.DateTime),
-					new SQLiteParameter("@cmpisdel", DbType.bit,1),
+					new SQLiteParameter("@cmpisdel", DbType.Boolean),
 					new SQLiteParameter("@cmpid", DbType.Int32,8)};
 			parameters[0].Value = model.cmpauthor;
 			parameters[1].Value = model.cmpphoto;
@@ -123,9 +123,10 @@ namespace Blogs.DAL
 			
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("delete from BlogCommentPhoto ");
-			strSql.Append(" where cmpid=@cmpid ");
+			strSql.Append(" where cmpid=@cmpid");
 			SQLiteParameter[] parameters = {
-					new SQLiteParameter("@cmpid", DbType.Int32,8)			};
+					new SQLiteParameter("@cmpid", DbType.Int32,4)
+			};
 			parameters[0].Value = cmpid;
 
 			int rows=DbHelperSQLite.ExecuteSql(strSql.ToString(),parameters);
@@ -166,9 +167,10 @@ namespace Blogs.DAL
 			
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select cmpid,cmpauthor,cmpphoto,cmptitle,cmpcontent,cmpaddtime,cmpisdel from BlogCommentPhoto ");
-			strSql.Append(" where cmpid=@cmpid ");
+			strSql.Append(" where cmpid=@cmpid");
 			SQLiteParameter[] parameters = {
-					new SQLiteParameter("@cmpid", DbType.Int32,8)			};
+					new SQLiteParameter("@cmpid", DbType.Int32,4)
+			};
 			parameters[0].Value = cmpid;
 
 			Blogs.Model.BlogCommentPhoto model=new Blogs.Model.BlogCommentPhoto();
